@@ -101,7 +101,44 @@ function Orders() {
                             </Tag>
                           </td>
                           <td className='data-table-body-tr-td'>
-                            {data?.booking_by?.fullName}
+                            {/* Guest booking info */}
+                            {data?.guest_name ? (
+                              <div style={{ lineHeight: '1.6' }}>
+                                <div>
+                                  <strong>Name:</strong>
+                                  {' '}
+                                  {data.guest_name}
+                                </div>
+                                <div>
+                                  <strong>Mobile:</strong>
+                                  {' '}
+                                  {data.guest_mobile}
+                                </div>
+                                {data.guest_aadhar && (
+                                  <div>
+                                    <strong>Aadhar:</strong>
+                                    {' '}
+                                    {data.guest_aadhar}
+                                  </div>
+                                )}
+                              </div>
+                            ) : (
+                              /* Registered user booking */
+                              <div style={{ lineHeight: '1.6' }}>
+                                <div>
+                                  <strong>Name:</strong>
+                                  {' '}
+                                  {data?.booking_by?.fullName || 'N/A'}
+                                </div>
+                                {data?.booking_by?.phone && (
+                                  <div>
+                                    <strong>Phone:</strong>
+                                    {' '}
+                                    {data.booking_by.phone}
+                                  </div>
+                                )}
+                              </div>
+                            )}
                           </td>
                           <td className='data-table-body-tr-td'>
                             {data?.room?.room_name}
